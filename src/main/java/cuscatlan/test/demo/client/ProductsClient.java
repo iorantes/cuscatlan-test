@@ -14,7 +14,7 @@ public interface ProductsClient {
 	@GetMapping("/products")
 	List<Products> getProducts();
 
-	@GetMapping("/product/{id}")
+	@GetMapping("/products/{id}")
 	Products getProduct(@PathVariable("id") int idProduct);
 
 }

@@ -10,7 +10,7 @@ import cuscatlan.test.demo.model.Products;
 import cuscatlan.test.demo.services.ProductsService;
 
 @Service
-public class ProductsServiceImplementation implements ProductsService{
+public class ProductsServiceImpl implements ProductsService{
 
 	@Autowired
 	private ProductsClient productsClient;
