@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cuscatlan.test.demo.config.EntityUtil;
+import cuscatlan.test.demo.model.dto.PaymentDto;
 import cuscatlan.test.demo.model.entity.PaymentEntity;
 import cuscatlan.test.demo.repositories.PaymentRepository;
 import cuscatlan.test.demo.services.PaymentService;
@@ -28,15 +30,25 @@ public class PaymentServieImpl implements PaymentService {
 	}
 
 	@Override
-	public PaymentEntity savePayment(PaymentEntity payment) {
-		PaymentEntity paymentSave = paymentRepo.save(payment);
-		return paymentSave;
+	public PaymentDto savePayment(PaymentDto payment) {
+
+		payment.setPaymentId(null);
+		EntityUtil entityUtil = new EntityUtil();
+		PaymentEntity paymentEntity = entityUtil.dtoToPaymentEntity(payment);
+		paymentEntity = paymentRepo.save(paymentEntity);
+		payment.setPaymentId(paymentEntity.getPaymentId());
+		return payment;
 	}
 
 	@Override
-	public PaymentEntity updatePayment(PaymentEntity payment) {
-		PaymentEntity paymentUpdate = paymentRepo.save(payment);
-		return paymentUpdate;
+	public PaymentDto updatePayment(PaymentDto payment) {
+
+		EntityUtil entityUtil = new EntityUtil();
+		PaymentEntity paymentEntity = entityUtil.dtoToPaymentEntity(payment);
+		paymentEntity = paymentRepo.save(paymentEntity);
+		payment.setPaymentId(paymentEntity.getPaymentId());
+		return payment;
+
 	}
 
 	@Override

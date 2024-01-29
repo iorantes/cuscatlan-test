@@ -5,9 +5,11 @@ import java.sql.Date;
 import cuscatlan.test.demo.model.dto.ClientDto;
 import cuscatlan.test.demo.model.dto.DetailDto;
 import cuscatlan.test.demo.model.dto.OrderDto;
+import cuscatlan.test.demo.model.dto.PaymentDto;
 import cuscatlan.test.demo.model.entity.ClientsEntity;
 import cuscatlan.test.demo.model.entity.DetailsEntity;
 import cuscatlan.test.demo.model.entity.OrdersEntity;
+import cuscatlan.test.demo.model.entity.PaymentEntity;
 
 public class EntityUtil {
 
@@ -64,6 +66,20 @@ public class EntityUtil {
 		orderEntity.setClient(clientEntity);
 
 		return orderEntity;
+
+	}
+
+	public PaymentEntity dtoToPaymentEntity(PaymentDto paymentDto) {
+
+		PaymentEntity paymentEntity = new PaymentEntity();
+		paymentEntity.setPaymentId(paymentDto.getPaymentId());
+		paymentEntity.setOrder(new OrdersEntity(paymentDto.getOrder()));
+		paymentEntity.setPaymentDate(getDateFromString(paymentDto.getPaymentDate()));
+		paymentEntity.setStatus(paymentDto.getStatus());
+		paymentEntity.setTotal(paymentDto.getTotal());
+		paymentEntity.setVoucher(paymentDto.getVoucher());
+
+		return paymentEntity;
 
 	}
 

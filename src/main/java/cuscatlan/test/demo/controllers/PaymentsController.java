@@ -14,36 +14,35 @@ import org.springframework.web.bind.annotation.RestController;
 import cuscatlan.test.demo.model.entity.PaymentEntity;
 import cuscatlan.test.demo.services.PaymentService;
 
-
 @RestController
 @RequestMapping(value = "/payment")
 public class PaymentsController {
-	
+
 	@Autowired
 	private PaymentService paymentService;
 
 	@GetMapping
-	public ResponseEntity<?> getOrders() {
+	public ResponseEntity<?> getPayments() {
 		return ResponseEntity.ok(paymentService.getPayments());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getOrder(@PathVariable(name = "id") int id) {
+	public ResponseEntity<?> getPayment(@PathVariable(name = "id") int id) {
 		return ResponseEntity.ok(paymentService.getPayment(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<?> saveOrder(@RequestBody PaymentEntity payment) {
+	public ResponseEntity<?> savePayment(@RequestBody PaymentEntity payment) {
 		return ResponseEntity.ok(paymentService.savePayment(payment));
 	}
 
 	@PutMapping
-	public ResponseEntity<?> updateOrder(@RequestBody PaymentEntity payment) {
+	public ResponseEntity<?> updatePayment(@RequestBody PaymentEntity payment) {
 		return ResponseEntity.ok(paymentService.updatePayment(payment));
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteOrder(@PathVariable(name = "id") int id) {
+	public void deletePayment(@PathVariable(name = "id") int id) {
 		paymentService.deletePayment(id);
 	}
 
