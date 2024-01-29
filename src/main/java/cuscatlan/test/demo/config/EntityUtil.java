@@ -15,16 +15,19 @@ import cuscatlan.test.demo.model.entity.PaymentEntity;
 
 public class EntityUtil {
 
+	//Function to get the current Date
 	public Date getCurrentDate() {
 		Date currentDate = new Date(System.currentTimeMillis());
 		return currentDate;
 	}
 
+	//Function to convert String to Date
 	public Date getDateFromString(String dateString) {
 		Date date = Date.valueOf(dateString);
 		return date;
 	}
 
+	//Function to convert Date to String
 	public String convertDateToString(Date dt) {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String dateToString = df.format(dt);
