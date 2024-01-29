@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cuscatlan.test.demo.model.dto.AuthRequest;
 import cuscatlan.test.demo.model.dto.ClientDto;
 import cuscatlan.test.demo.services.ClientsService;
+import cuscatlan.test.demo.services.SecurityService;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -20,6 +22,9 @@ public class ClientsController {
 
 	@Autowired
 	private ClientsService clientsService;
+
+	@Autowired
+	private SecurityService securityService;
 
 	@GetMapping
 	public ResponseEntity<?> getClients() {
@@ -45,4 +50,10 @@ public class ClientsController {
 	public void deleteClient(@PathVariable(name = "id") Integer id) {
 		clientsService.deleteClient(id);
 	}
+
+	@PostMapping(value = "/auth")
+	public ResponseEntity<?> authClient(@RequestBody AuthRequest auth) throws Exception {
+		return ResponseEntity.ok(securityService.authClient(auth));
+	}
+
 }

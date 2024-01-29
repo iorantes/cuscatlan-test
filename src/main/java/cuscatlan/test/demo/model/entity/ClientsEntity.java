@@ -33,6 +33,12 @@ public class ClientsEntity {
 	@Column
 	private Integer status;
 
+	@Column
+	private String password;
+
+	@Column
+	private String role;
+
 	public Long getClientId() {
 		return clientId;
 	}
@@ -87,6 +93,22 @@ public class ClientsEntity {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

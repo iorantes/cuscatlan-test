@@ -30,6 +30,8 @@ public class EntityUtil {
 		clientsEntity.setAddress(clientDto.getAddress());
 		clientsEntity.setBirthDate(getDateFromString(clientDto.getBirthDate()));
 		clientsEntity.setStatus(clientDto.getStatus());
+		clientsEntity.setPassword(clientDto.getPassword());
+		clientsEntity.setRole(clientDto.getRole());
 
 		return clientsEntity;
 	}
@@ -56,11 +58,11 @@ public class EntityUtil {
 		orderEntity.setOrderId(orderDto.getOrderId());
 		orderEntity.setOrderDate(getDateFromString(orderDto.getOrderDate()));
 		orderEntity.setTotal(orderDto.getTotal());
-		
+
 		ClientsEntity clientEntity = new ClientsEntity();
 		clientEntity.setClientId(orderDto.getClient());
 		orderEntity.setClient(clientEntity);
-		
+
 		return orderEntity;
 
 	}

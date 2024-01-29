@@ -9,6 +9,8 @@ public class ClientDto {
 	private String address;
 	private String birthDate;
 	private Integer status;
+	private String password;
+	private String role;
 
 	public Long getClientId() {
 		return clientId;
@@ -64,6 +66,22 @@ public class ClientDto {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }
