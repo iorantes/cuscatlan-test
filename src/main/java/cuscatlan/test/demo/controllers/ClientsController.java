@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cuscatlan.test.demo.model.ClientsEntity;
+import cuscatlan.test.demo.model.dto.ClientDto;
 import cuscatlan.test.demo.services.ClientsService;
 
 @RestController
@@ -27,22 +27,22 @@ public class ClientsController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getClient(@PathVariable(name = "id") int id) {
+	public ResponseEntity<?> getClient(@PathVariable(name = "id") Integer id) {
 		return ResponseEntity.ok(clientsService.getClient(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<?> saveClient(@RequestBody ClientsEntity client) {
+	public ResponseEntity<?> saveClient(@RequestBody ClientDto client) {
 		return ResponseEntity.ok(clientsService.saveClient(client));
 	}
 
 	@PutMapping
-	public ResponseEntity<?> updateClient(@RequestBody ClientsEntity client) {
+	public ResponseEntity<?> updateClient(@RequestBody ClientDto client) {
 		return ResponseEntity.ok(clientsService.updateClient(client));
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteClient(@PathVariable(name = "id") int id) {
+	public void deleteClient(@PathVariable(name = "id") Integer id) {
 		clientsService.deleteClient(id);
 	}
 }

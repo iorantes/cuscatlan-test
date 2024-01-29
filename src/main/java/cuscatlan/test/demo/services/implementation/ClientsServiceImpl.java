@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cuscatlan.test.demo.model.ClientsEntity;
+import cuscatlan.test.demo.config.EntityUtil;
+import cuscatlan.test.demo.model.dto.ClientDto;
+import cuscatlan.test.demo.model.entity.ClientsEntity;
 import cuscatlan.test.demo.repositories.ClientsRepository;
 import cuscatlan.test.demo.services.ClientsService;
 
@@ -22,27 +24,32 @@ public class ClientsServiceImpl implements ClientsService {
 	}
 
 	@Override
-	public ClientsEntity getClient(int id) {
+	public ClientsEntity getClient(Integer id) {
 		ClientsEntity clients = clientsRepo.findById(Long.valueOf(id)).orElse(null);
 		return clients;
 	}
 
 	@Override
-	public ClientsEntity saveClient(ClientsEntity client) {
-		System.out.println(client.getAddress());
-		ClientsEntity clients = clientsRepo.save(client);
-		return clients;
+	public ClientDto saveClient(ClientDto client) {
+		client.setClientId(null);
+		EntityUtil entityUtil = new EntityUtil();
+		ClientsEntity clientSave = entityUtil.dtoToClientsEntity(client);
+		clientSave = clientsRepo.save(clientSave);
+		client.setClientId(clientSave.getClientId());
+		return client;
 	}
 
 	@Override
-	public ClientsEntity updateClient(ClientsEntity client) {
-		System.out.println(client.getId());
-		ClientsEntity clients = clientsRepo.save(client);
-		return clients;
+	public ClientDto updateClient(ClientDto client) {
+		EntityUtil entityUtil = new EntityUtil();
+		ClientsEntity clientSave = entityUtil.dtoToClientsEntity(client);
+		clientSave = clientsRepo.save(clientSave);
+		client.setClientId(clientSave.getClientId());
+		return client;
 	}
 
 	@Override
-	public void deleteClient(int id) {
+	public void deleteClient(Integer id) {
 		clientsRepo.deleteById(Long.valueOf(id));
 	}
 

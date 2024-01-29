@@ -1,19 +1,19 @@
-package cuscatlan.test.demo.model;
+package cuscatlan.test.demo.model.entity;
 
 public class Products {
 
-	private int id;
+	private Integer id;
 	private String title;
-	private float price;
+	private Float price;
 	private String category;
 	private String description;
 	private String image;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -25,11 +25,11 @@ public class Products {
 		this.title = title;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 

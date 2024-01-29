@@ -2,7 +2,7 @@ package cuscatlan.test.demo.services;
 
 import java.util.List;
 
-import cuscatlan.test.demo.model.Products;
+import cuscatlan.test.demo.model.entity.Products;
 
 public interface ProductsService {
 	

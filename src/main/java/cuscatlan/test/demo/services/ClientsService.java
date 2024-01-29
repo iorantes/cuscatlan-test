@@ -2,18 +2,19 @@ package cuscatlan.test.demo.services;
 
 import java.util.List;
 
-import cuscatlan.test.demo.model.ClientsEntity;
+import cuscatlan.test.demo.model.dto.ClientDto;
+import cuscatlan.test.demo.model.entity.ClientsEntity;
 
 public interface ClientsService {
 
 	public List<ClientsEntity> getClients();
 
-	public ClientsEntity getClient(int id);
+	public ClientsEntity getClient(Integer id);
 
-	public ClientsEntity saveClient(ClientsEntity client);
+	public ClientDto saveClient(ClientDto client);
 
-	public ClientsEntity updateClient(ClientsEntity client);
+	public ClientDto updateClient(ClientDto client);
 
-	public void deleteClient(int id);
+	public void deleteClient(Integer id);
 
 }

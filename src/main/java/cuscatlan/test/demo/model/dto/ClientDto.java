@@ -1,44 +1,21 @@
-package cuscatlan.test.demo.model;
+package cuscatlan.test.demo.model.dto;
 
-import java.sql.Date;
+public class ClientDto {
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity(name = "Clients")
-public class ClientsEntity {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
-	@Column
+	private Long clientId;
 	private String name;
-
-	@Column
 	private String lastName;
-
-	@Column
 	private String email;
-
-	@Column
 	private String address;
-
-	@Column
-	private Date birthDate;
-
-	@Column
+	private String birthDate;
 	private Integer status;
 
-	public Long getId() {
-		return id;
+	public Long getClientId() {
+		return clientId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
 	}
 
 	public String getName() {
@@ -73,11 +50,11 @@ public class ClientsEntity {
 		this.address = address;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cuscatlan.test.demo.client.ProductsClient;
-import cuscatlan.test.demo.model.Products;
+import cuscatlan.test.demo.model.entity.Products;
 import cuscatlan.test.demo.services.ProductsService;
 
 @Service
