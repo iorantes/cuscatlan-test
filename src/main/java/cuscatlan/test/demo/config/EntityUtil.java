@@ -1,6 +1,8 @@
 package cuscatlan.test.demo.config;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import cuscatlan.test.demo.model.dto.ClientDto;
 import cuscatlan.test.demo.model.dto.DetailDto;
@@ -21,6 +23,12 @@ public class EntityUtil {
 	public Date getDateFromString(String dateString) {
 		Date date = Date.valueOf(dateString);
 		return date;
+	}
+
+	public String convertDateToString(Date dt) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String dateToString = df.format(dt);
+		return dateToString;
 	}
 
 	public ClientsEntity dtoToClientsEntity(ClientDto clientDto) {
@@ -74,7 +82,7 @@ public class EntityUtil {
 		PaymentEntity paymentEntity = new PaymentEntity();
 		paymentEntity.setPaymentId(paymentDto.getPaymentId());
 		paymentEntity.setOrder(new OrdersEntity(paymentDto.getOrder()));
-		paymentEntity.setPaymentDate(getDateFromString(paymentDto.getPaymentDate()));
+		paymentEntity.setPaymentDate(getCurrentDate());
 		paymentEntity.setStatus(paymentDto.getStatus());
 		paymentEntity.setTotal(paymentDto.getTotal());
 		paymentEntity.setVoucher(paymentDto.getVoucher());

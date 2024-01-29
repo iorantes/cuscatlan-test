@@ -25,9 +25,9 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain springWebFilterChain(HttpSecurity http, JwtUtil tokenProvider) throws Exception {
 		return http.httpBasic(AbstractHttpConfigurer::disable).csrf(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(
-						authorize -> authorize.requestMatchers("/clients/auth", "/v3/api-docs/**", "/swagger-ui/**")
-								.permitAll().anyRequest().authenticated())
+				.authorizeHttpRequests(authorize -> authorize
+						.requestMatchers("/clients/auth", "/v3/api-docs/**", "/swagger-ui/**", "/h2/**", "h2/login.do")
+						.permitAll().anyRequest().authenticated())
 				.addFilterBefore(new JwtTokenAuthenticationFilter(tokenProvider),
 						UsernamePasswordAuthenticationFilter.class)
 				.build();

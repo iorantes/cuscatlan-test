@@ -39,4 +39,16 @@ public class OrderDto {
 		this.client = client;
 	}
 
+	public OrderDto(Long orderId, String orderDate, Float total, Long client) {
+		super();
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.total = total;
+		this.client = client;
+	}
+
+	public OrderDto() {
+		super();
+	}
+
 }

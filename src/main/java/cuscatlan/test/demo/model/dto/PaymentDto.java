@@ -5,7 +5,6 @@ public class PaymentDto {
 	private Long paymentId;
 	private Long order;
 	private Float total;
-	private String paymentDate;
 	private String voucher;
 	private String status;
 
@@ -33,14 +32,6 @@ public class PaymentDto {
 		this.total = total;
 	}
 
-	public String getPaymentDate() {
-		return paymentDate;
-	}
-
-	public void setPaymentDate(String paymentDate) {
-		this.paymentDate = paymentDate;
-	}
-
 	public String getVoucher() {
 		return voucher;
 	}
@@ -55,6 +46,19 @@ public class PaymentDto {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public PaymentDto(Long paymentId, Long order, Float total, String voucher, String status) {
+		super();
+		this.paymentId = paymentId;
+		this.order = order;
+		this.total = total;
+		this.voucher = voucher;
+		this.status = status;
+	}
+
+	public PaymentDto() {
+		super();
 	}
 
 }

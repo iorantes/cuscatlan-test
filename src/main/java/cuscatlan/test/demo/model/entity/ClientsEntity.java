@@ -111,4 +111,22 @@ public class ClientsEntity {
 		this.role = role;
 	}
 
+	public ClientsEntity() {
+		super();
+	}
+
+	public ClientsEntity(Long clientId, String name, String lastName, String email, String address, Date birthDate,
+			Integer status, String password, String role) {
+		super();
+		this.clientId = clientId;
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.address = address;
+		this.birthDate = birthDate;
+		this.status = status;
+		this.password = password;
+		this.role = role;
+	}
+
 }

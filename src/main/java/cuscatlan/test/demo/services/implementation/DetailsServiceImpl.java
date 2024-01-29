@@ -63,19 +63,20 @@ public class DetailsServiceImpl implements DetailsService {
 	public DetailDto updateDetail(DetailDto details) {
 		EntityUtil entityUtil = new EntityUtil();
 		DetailsEntity detailsSave = entityUtil.dtoToDetailsEntity(details);
+		Long detailId= detailsSave.getDetailId();
 		OrdersEntity orderEntity = ordersRepo.findById(detailsSave.getOrder().getOrderId()).orElse(null);
 
 		List<DetailsEntity> detailList = detailsRepo.findAllByOrder(detailsSave.getOrder());
 		Float total = 0f;
-
+		
 		for (DetailsEntity detailsEntity : detailList) {
 			total = total + (detailsEntity.getPrice() * detailsEntity.getQuantity());
 			orderEntity.setTotal(total);
 		}
 
 		ordersRepo.save(orderEntity);
-		
-		detailsSave = detailsRepo.save(detailsSave);
+		detailsSave.setDetailId(detailId);
+		detailsRepo.save(detailsSave);
 		details.setDetailId(detailsSave.getDetailId());
 		return details;
 	}

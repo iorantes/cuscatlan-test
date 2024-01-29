@@ -26,7 +26,7 @@ public class DetailsController {
 		return ResponseEntity.ok(detailsService.getDetails());
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/order/{id}")
 	public ResponseEntity<?> getDetailByOrder(@PathVariable(name = "id") Integer id) {
 		return ResponseEntity.ok(detailsService.getDetailByOrder(id));
 	}

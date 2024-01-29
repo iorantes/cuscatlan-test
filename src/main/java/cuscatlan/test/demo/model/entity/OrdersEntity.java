@@ -69,4 +69,12 @@ public class OrdersEntity {
 		this.orderId = orderId;
 	}
 
+	public OrdersEntity(Long orderId, Date orderDate, Float total, ClientsEntity client) {
+		super();
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.total = total;
+		this.client = client;
+	}
+
 }

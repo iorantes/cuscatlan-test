@@ -48,4 +48,17 @@ public class DetailDto {
 		this.product = product;
 	}
 
+	public DetailDto(Long detailId, Long order, Integer quantity, Float price, Integer product) {
+		super();
+		this.detailId = detailId;
+		this.order = order;
+		this.quantity = quantity;
+		this.price = price;
+		this.product = product;
+	}
+
+	public DetailDto() {
+		super();
+	}
+
 }
