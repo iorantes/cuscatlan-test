@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cuscatlan.test.demo.model.entity.PaymentEntity;
+import cuscatlan.test.demo.model.dto.PaymentDto;
 import cuscatlan.test.demo.services.PaymentService;
 
 @RestController
@@ -32,12 +32,12 @@ public class PaymentsController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> savePayment(@RequestBody PaymentEntity payment) {
+	public ResponseEntity<?> savePayment(@RequestBody PaymentDto payment) {
 		return ResponseEntity.ok(paymentService.savePayment(payment));
 	}
 
 	@PutMapping
-	public ResponseEntity<?> updatePayment(@RequestBody PaymentEntity payment) {
+	public ResponseEntity<?> updatePayment(@RequestBody PaymentDto payment) {
 		return ResponseEntity.ok(paymentService.updatePayment(payment));
 	}
 

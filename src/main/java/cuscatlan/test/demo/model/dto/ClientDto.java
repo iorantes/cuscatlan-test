@@ -84,4 +84,22 @@ public class ClientDto {
 		this.role = role;
 	}
 
+	public ClientDto(Long clientId, String name, String lastName, String email, String address, String birthDate,
+			Integer status, String password, String role) {
+		super();
+		this.clientId = clientId;
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.address = address;
+		this.birthDate = birthDate;
+		this.status = status;
+		this.password = password;
+		this.role = role;
+	}
+
+	public ClientDto() {
+		super();
+	}
+
 }
