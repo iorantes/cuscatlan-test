@@ -57,4 +57,18 @@ public class Products {
 		this.image = image;
 	}
 
+	public Products(Integer id, String title, Float price, String category, String description, String image) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.price = price;
+		this.category = category;
+		this.description = description;
+		this.image = image;
+	}
+
+	public Products() {
+		super();
+	}
+
 }
