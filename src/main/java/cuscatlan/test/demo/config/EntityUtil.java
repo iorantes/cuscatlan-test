@@ -91,4 +91,13 @@ public class EntityUtil {
 
 	}
 
+	public boolean validateNumber(Float number) {
+		
+		if (number >= 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
 }

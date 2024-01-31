@@ -3,6 +3,9 @@ package cuscatlan.test.demo.services.implementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import cuscatlan.test.demo.config.EntityUtil;
@@ -12,6 +15,7 @@ import cuscatlan.test.demo.model.entity.OrdersEntity;
 import cuscatlan.test.demo.repositories.DetailsRepository;
 import cuscatlan.test.demo.repositories.OrdersRepository;
 import cuscatlan.test.demo.services.DetailsService;
+import cuscatlan.test.demo.model.dto.Response;
 
 @Service
 public class DetailsServiceImpl implements DetailsService {
@@ -30,20 +34,27 @@ public class DetailsServiceImpl implements DetailsService {
 
 	@Override
 	public List<DetailsEntity> getDetailByOrder(Integer id) {
-		
+
 		OrdersEntity order = new OrdersEntity(Long.valueOf(id));
 		List<DetailsEntity> detailList = detailsRepo.findAllByOrder(order);
-		
+
 		return detailList;
 	}
 
 	@Override
-	public DetailDto saveDetail(DetailDto details) {
+	public ResponseEntity<?> saveDetail(DetailDto details) {
 
 		details.setDetailId(null);
 		EntityUtil entityUtil = new EntityUtil();
 		DetailsEntity detailsSave = entityUtil.dtoToDetailsEntity(details);
 		OrdersEntity orderEntity = ordersRepo.findById(detailsSave.getOrder().getOrderId()).orElse(null);
+
+		boolean checkPrice = entityUtil.validateNumber(details.getPrice());
+		boolean checkQuantity = entityUtil.validateNumber(Float.valueOf(details.getQuantity()));
+
+		if (checkPrice == false && checkQuantity == false) {
+			return new ResponseEntity<Response>(new Response("Error, datos invalidos"), HttpStatus.BAD_REQUEST);
+		}
 
 		List<DetailsEntity> detailList = detailsRepo.findAllByOrder(detailsSave.getOrder());
 		Float total = 0f;
@@ -56,19 +67,19 @@ public class DetailsServiceImpl implements DetailsService {
 		ordersRepo.save(orderEntity);
 		detailsSave = detailsRepo.save(detailsSave);
 		details.setDetailId(detailsSave.getDetailId());
-		return details;
+		return ResponseEntity.ok(details);
 	}
 
 	@Override
 	public DetailDto updateDetail(DetailDto details) {
 		EntityUtil entityUtil = new EntityUtil();
 		DetailsEntity detailsSave = entityUtil.dtoToDetailsEntity(details);
-		Long detailId= detailsSave.getDetailId();
+		Long detailId = detailsSave.getDetailId();
 		OrdersEntity orderEntity = ordersRepo.findById(detailsSave.getOrder().getOrderId()).orElse(null);
 
 		List<DetailsEntity> detailList = detailsRepo.findAllByOrder(detailsSave.getOrder());
 		Float total = 0f;
-		
+
 		for (DetailsEntity detailsEntity : detailList) {
 			total = total + (detailsEntity.getPrice() * detailsEntity.getQuantity());
 			orderEntity.setTotal(total);

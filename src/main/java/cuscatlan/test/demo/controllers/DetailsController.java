@@ -33,7 +33,7 @@ public class DetailsController {
 
 	@PostMapping
 	public ResponseEntity<?> saveDetail(@RequestBody DetailDto details) {
-		return ResponseEntity.ok(detailsService.saveDetail(details));
+		return detailsService.saveDetail(details);
 	}
 
 	@PutMapping
