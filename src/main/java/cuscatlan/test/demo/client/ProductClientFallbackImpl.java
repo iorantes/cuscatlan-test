@@ -18,7 +18,7 @@ public class ProductClientFallbackImpl implements FallbackFactory<ProductsClient
 			@Override
 			public List<Products> getProducts() {
 				if (cause instanceof Exception) {
-					System.out.println("Exception!");
+					System.out.println("Exception retrieving data from origin");
 				}
 				return new ArrayList<Products>();
 			}
@@ -26,7 +26,7 @@ public class ProductClientFallbackImpl implements FallbackFactory<ProductsClient
 			@Override
 			public Products getProduct(int idProduct) {
 				if (cause instanceof Exception) {
-					System.out.println("Exception!");
+					System.out.println("Exception retrieving data from origin");
 				}
 				return new Products();
 			}

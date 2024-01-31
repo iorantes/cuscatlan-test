@@ -59,6 +59,7 @@ public class DetailsServiceImpl implements DetailsService {
 		List<DetailsEntity> detailList = detailsRepo.findAllByOrder(detailsSave.getOrder());
 		Float total = 0f;
 
+		//Obtain the sum of the Details from an specific Order
 		for (DetailsEntity detailsEntity : detailList) {
 			total = total + (detailsEntity.getPrice() * detailsEntity.getQuantity());
 			orderEntity.setTotal(total);
@@ -79,7 +80,8 @@ public class DetailsServiceImpl implements DetailsService {
 
 		List<DetailsEntity> detailList = detailsRepo.findAllByOrder(detailsSave.getOrder());
 		Float total = 0f;
-
+		
+		//Obtain the sum of the Details from an specific Order
 		for (DetailsEntity detailsEntity : detailList) {
 			total = total + (detailsEntity.getPrice() * detailsEntity.getQuantity());
 			orderEntity.setTotal(total);
